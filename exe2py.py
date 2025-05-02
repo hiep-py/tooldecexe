@@ -734,7 +734,7 @@ def print_banner():
 {Fore.CYAN}║  {Fore.YELLOW}██║        ██║                                
 {Fore.CYAN}║  {Fore.YELLOW}╚═╝        ╚═╝                                
 {Fore.CYAN}║                                                            
-{Fore.CYAN}║  {Fore.GREEN}exe2py v1.0                                               
+{Fore.CYAN}║  {Fore.GREEN}exe2py(beta mode) v1.0                                               
 {Fore.CYAN}║  {Fore.GREEN}Author: HiepZ8 (Hồ Hiệp)
 {Fore.CYAN}║  {Fore.GREEN}Github: https://github.com/hiep-py
 {Fore.CYAN}║  {Fore.GREEN}Tiktok: https://www.tiktok.com/@hiepz8py
