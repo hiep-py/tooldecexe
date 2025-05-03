@@ -8,15 +8,28 @@
 ## 🇻🇳 Tiếng Việt
 
 ### Giới thiệu
-EXE2PY là một công cụ mạnh mẽ được thiết kế để trích xuất và phân tích các file EXE được tạo bởi PyInstaller. Công cụ này giúp bạn chuyển đổi các file thực thi (.exe) thành mã Python có thể đọc được.
+EXE2PY là một bộ công cụ phân tích mạnh mẽ được thiết kế đặc biệt cho việc nghiên cứu và khôi phục mã nguồn từ các file thực thi (.exe) được đóng gói bằng PyInstaller. Công cụ này kết hợp nhiều kỹ thuật phân tích tiên tiến để giúp các nhà phát triển, chuyên gia bảo mật và kỹ sư ngược dịch truy cập vào mã Python ban đầu được nhúng trong các ứng dụng thực thi.
+
+Được phát triển với mục tiêu cung cấp giải pháp toàn diện và thân thiện với người dùng, EXE2PY giải quyết những thách thức phức tạp trong quá trình khôi phục mã nguồn, từ việc xác định đúng phiên bản Python, xử lý các file .pyc được nén và mã hóa, đến việc chuyển đổi bytecode thành mã Python có thể đọc và chỉnh sửa được.
+
+Công cụ sử dụng quy trình ba bước tinh vi để đảm bảo kết quả tối ưu:
+1. **Trích xuất**: Phân tích cấu trúc PyInstaller archive và trích xuất tất cả các thành phần - bao gồm file .pyc, thư viện và tài nguyên
+2. **Phân tích bytecode**: Chuyển đổi file .pyc sang định dạng bytecode để phân tích chuyên sâu
+3. **Giải mã**: Sử dụng kỹ thuật decompile tân tiến để khôi phục mã Python từ các file bytecode
+
+Ứng dụng thực tế của công cụ này rất đa dạng, từ khắc phục sự cố ứng dụng, mở rộng code nguồn mở, học tập kỹ thuật lập trình, đến phân tích mã độc an toàn trong môi trường cách ly.
 
 ### Tính năng chính
-- 🔍 Trích xuất file từ EXE (PyInstaller archive)
-- 🔄 Chuyển đổi file .pyc sang bytecode (.txt)
-- 🌐 Hỗ trợ nhiều phiên bản Python (2.0 - 3.13)
-- 🔧 Tự động phát hiện phiên bản PyInstaller
-- 🌈 Giao diện console đẹp mắt với màu sắc
-- 🌍 Hỗ trợ đa ngôn ngữ (Tiếng Việt và Tiếng Anh)
+- 🔍 Trích xuất file từ EXE (PyInstaller archive) với phát hiện và xử lý tự động
+- 🔄 Chuyển đổi file .pyc sang bytecode (.txt) để phân tích chuyên sâu
+- 🧩 Giải mã bytecode thành mã Python đọc được thông qua các thuật toán tiên tiến
+- 🌐 Hỗ trợ đầy đủ nhiều phiên bản Python (2.0 - 3.13) với xử lý đặc biệt cho từng phiên bản
+- 🔧 Tự động phát hiện phiên bản PyInstaller và điều chỉnh phương pháp trích xuất phù hợp
+- 🔐 Xử lý đặc biệt cho các file đã được mã hóa hoặc nén
+- 🔄 Chức năng chuyển đổi hai chiều giữa .py và .pyc
+- 🌍 Tích hợp API PyLingual.io cho khả năng giải mã nâng cao
+- 🌈 Giao diện console trực quan với nhiều màu sắc và chỉ báo tiến trình
+- 🗣️ Hỗ trợ đa ngôn ngữ (Tiếng Việt và Tiếng Anh) với khả năng mở rộng
 
 ### Cài đặt
 ```bash
@@ -41,6 +54,7 @@ python exe2py.py
    - Xem thông tin về công cụ
    - Thoát
    - Thay đổi ngôn ngữ
+   - Chuyển đổi file Python (py ↔ pyc)
 
 3. Nhập đường dẫn file EXE cần chuyển đổi
 
@@ -48,23 +62,41 @@ python exe2py.py
 
 5. Chọn có/không chuyển đổi thư viện
 
-### Lưu ý
-- File EXE phải được tạo bởi PyInstaller
-- Có thể bỏ qua bước chuyển đổi bytecode
-- Kết quả được lưu trong thư mục riêng
+6. Tùy chọn: Giải mã file .pyc sang Python (.py) sử dụng API trực tuyến
+
+### Lưu ý kỹ thuật
+- File EXE phải được tạo bởi PyInstaller để có thể phân tích thành công
+- Quy trình giải mã có thể có kết quả khác nhau tùy thuộc vào độ phức tạp của mã nguồn
+- Có thể bỏ qua bước chuyển đổi bytecode nếu chỉ cần trích xuất tài nguyên
+- Quá trình giải mã online yêu cầu kết nối internet và có thể mất nhiều thời gian
+- Kết quả được lưu trong các thư mục riêng biệt để dễ quản lý và phân tích
+- Công cụ hỗ trợ nhiều chiến lược decompile thay thế nếu phương pháp chính thất bại
 
 ## 🇬🇧 English
 
 ### Introduction
-EXE2PY is a powerful tool designed to extract and analyze EXE files created by PyInstaller. This tool helps you convert executable (.exe) files into readable Python code.
+EXE2PY is a powerful analysis toolkit specifically designed for researching and recovering source code from executable files (.exe) packaged with PyInstaller. This tool combines multiple advanced analysis techniques to help developers, security professionals, and reverse engineers access the original Python code embedded within executable applications.
+
+Developed with the goal of providing a comprehensive and user-friendly solution, EXE2PY addresses the complex challenges in source code recovery, from correctly identifying Python versions, handling compressed and encrypted .pyc files, to converting bytecode into readable and editable Python code.
+
+The tool employs a sophisticated three-step process to ensure optimal results:
+1. **Extraction**: Analyzes the PyInstaller archive structure and extracts all components - including .pyc files, libraries, and resources
+2. **Bytecode Analysis**: Converts .pyc files to bytecode format for in-depth analysis
+3. **Decompilation**: Uses advanced decompilation techniques to recover Python code from bytecode files
+
+The practical applications of this tool are diverse, ranging from application troubleshooting, open-source code extension, programming technique learning, to safe malware analysis in isolated environments.
 
 ### Key Features
-- 🔍 Extract files from EXE (PyInstaller archive)
-- 🔄 Convert .pyc files to bytecode (.txt)
-- 🌐 Support multiple Python versions (2.0 - 3.13)
-- 🔧 Auto-detect PyInstaller version
-- 🌈 Beautiful colored console interface
-- 🌍 Multi-language support (Vietnamese and English)
+- 🔍 Extract files from EXE (PyInstaller archive) with automatic detection and handling
+- 🔄 Convert .pyc files to bytecode (.txt) for in-depth analysis
+- 🧩 Decompile bytecode into readable Python code through advanced algorithms
+- 🌐 Full support for multiple Python versions (2.0 - 3.13) with special handling for each version
+- 🔧 Auto-detect PyInstaller version and adjust extraction methods accordingly
+- 🔐 Special handling for encrypted or compressed files
+- 🔄 Two-way conversion functionality between .py and .pyc
+- 🌍 Integration with PyLingual.io API for enhanced decompilation capabilities
+- 🌈 Intuitive console interface with color coding and progress indicators
+- 🗣️ Multi-language support (Vietnamese and English) with expansion capability
 
 ### Installation
 ```bash
@@ -89,6 +121,7 @@ python exe2py.py
    - View tool information
    - Exit
    - Change language
+   - Convert Python files (py ↔ pyc)
 
 3. Enter the path of EXE file to convert
 
@@ -96,10 +129,15 @@ python exe2py.py
 
 5. Choose whether to convert libraries
 
-### Notes
-- EXE file must be created by PyInstaller
-- Can skip bytecode conversion step
-- Results are saved in separate directory
+6. Optional: Decompile .pyc files to Python (.py) using online API
+
+### Technical Notes
+- EXE files must be created by PyInstaller for successful analysis
+- The decompilation process may yield varying results depending on source code complexity
+- Bytecode conversion step can be skipped if only resource extraction is needed
+- Online decompilation process requires internet connection and may take considerable time
+- Results are saved in separate directories for easy management and analysis
+- The tool supports multiple alternative decompilation strategies if the primary method fails
 
 ## 📝 License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
