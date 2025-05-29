@@ -33,7 +33,7 @@ LANGUAGES = {
         'start_analyze': 'Bắt đầu phân tích file EXE',
         'view_info': 'Xem thông tin về công cụ',
         'exit': 'Thoát',
-        'change_language': 'Thay đổi ngôn ngữ',
+        'change_language': 'Change language',
         'choose_option': 'Chọn chức năng (1-4):',
         'enter_exe_path': 'Nhập đường dẫn file EXE cần chuyển đổi:',
         'file_not_found': 'Lỗi: File không tồn tại. Vui lòng thử lại.',
